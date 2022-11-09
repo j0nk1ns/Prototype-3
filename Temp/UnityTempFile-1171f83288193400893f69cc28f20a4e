@@ -301,4 +301,5 @@
 /define:CSHARP_7_3_OR_NEWER
 "Assets/Scripts/MoveLeft.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/RepeatBackground.cs"
 "Assets/Scripts/SpawnManager.cs"
