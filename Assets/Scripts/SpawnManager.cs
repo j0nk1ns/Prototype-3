@@ -5,16 +5,16 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
 
-    public GameObject obstaclePrefeb;
+    public GameObject[] obstaclePrefebs;
     private Vector3 spawnPos = new Vector3(25, 0, 0);
     private float startDelay = 2;
-    private float repeatRate = 2;
+    private float spawnInterval = 2;
     private PlayerController playerControllerScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObastacle", startDelay, repeatRate);
+        InvokeRepeating("SpawnRandomObastacle", startDelay, spawnInterval);
         playerControllerScript = GameObject.Find("player").GetComponent<PlayerController>();
     }
 
@@ -25,13 +25,14 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    void SpawnObastacle()
+    void SpawnRandomObastacle()
     {
         if(playerControllerScript.gameOver == false)
         {
-            Instantiate(obstaclePrefeb, spawnPos, obstaclePrefeb.transform.rotation);
+            int obstacleIndex = Random.Range(0, obstaclePrefebs.Length);
+            Instantiate(obstaclePrefebs[obstacleIndex], spawnPos, obstaclePrefebs[obstacleIndex].transform.rotation);
         }
-        
+      
     }
 
 }
